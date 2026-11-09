@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timothy Hanby — Senior Software Architect</title>
+<meta name="description" content="Timothy Hanby — Senior Software Architect with 20+ years in enterprise systems, specializing in agentic AI, LLM integration, and autonomous workflows.">
+<meta property="og:title" content="Timothy Hanby — Senior Software Architect">
+<meta property="og:description" content="Agentic AI · Enterprise systems architecture · 20+ years shipping">
+<meta name="theme-color" content="#05060a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05060a; --glass:rgba(255,255,255,.035); --line:rgba(255,255,255,.08); --text:#eef1f7; --muted:#8a93a6;
+  --lime:#b4ff39; --cyan:#22e6ff; --violet:#9b6bff; --pink:#ff4fd8;
+  --grad:linear-gradient(110deg,var(--lime),var(--cyan) 45%,var(--violet) 75%,var(--pink));
+  --mono:'JetBrains Mono',ui-monospace,monospace; --sans:'Space Grotesk',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font:16px/1.6 var(--sans);overflow-x:hidden;cursor:default}
+::selection{background:var(--lime);color:#000}
+a{color:inherit;text-decoration:none}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.06;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.scan{position:fixed;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(0,0,0,.18) 3px);opacity:.35}
+.glow{position:fixed;width:600px;height:600px;border-radius:50%;pointer-events:none;z-index:1;
+  background:radial-gradient(circle,rgba(34,230,255,.10),transparent 60%);transform:translate(-50%,-50%);transition:opacity .3s}
+main,nav,footer{position:relative;z-index:2}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* nav */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:20;width:min(1140px,calc(100% - 24px));
+  display:flex;align-items:center;justify-content:space-between;padding:10px 14px 10px 18px;border:1px solid var(--line);
+  border-radius:14px;background:rgba(8,10,16,.55);backdrop-filter:blur(18px) saturate(160%);font-family:var(--mono);font-size:13px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+nav ul{display:flex;gap:4px;list-style:none;align-items:center}
+nav ul a{color:var(--muted);padding:6px 10px;border-radius:8px;transition:.2s}
+nav ul a:hover{color:var(--text);background:var(--glass)}
+.kbd{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:8px;padding:5px 9px;color:var(--muted);cursor:pointer;background:none;font:inherit}
+.kbd:hover{color:var(--text);border-color:var(--cyan)}
+.kbd b{font-weight:400;border:1px solid var(--line);border-radius:4px;padding:0 5px;font-size:11px}
+
+/* hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding-block:120px 60px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--lime)}
+h1{font-family:var(--sans);font-size:clamp(52px,8.4vw,116px);line-height:.92;letter-spacing:-.045em;font-weight:700}
+h1 .g{background:var(--grad);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 6s linear infinite}
+@keyframes shift{to{background-position:200% center}}
+.role{font-family:var(--mono);font-size:clamp(15px,1.6vw,19px);color:var(--muted);margin:26px 0 34px;min-height:1.6em}
+.role .typed{color:var(--text)} .role .caret{display:inline-block;width:9px;height:1.1em;background:var(--cyan);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{position:relative;font-family:var(--mono);font-size:13px;padding:13px 20px;border-radius:12px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(10px);transition:.25s;display:inline-flex;gap:8px;align-items:center}
+.btn:hover{border-color:rgba(255,255,255,.25);transform:translateY(-2px)}
+.btn.primary{background:var(--lime);color:#06070a;border-color:var(--lime);font-weight:600;box-shadow:0 0 0 0 rgba(180,255,57,.5),0 10px 40px -10px rgba(180,255,57,.6)}
+.btn.primary:hover{box-shadow:0 0 0 6px rgba(180,255,57,.12),0 14px 50px -8px rgba(180,255,57,.8)}
+.status{margin-top:40px;display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.status span{display:flex;align-items:center;gap:8px}
+.status i{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime)}
+
+/* terminal */
+.term{position:relative;border-radius:18px;background:rgba(10,12,20,.72);border:1px solid var(--line);backdrop-filter:blur(20px);
+  box-shadow:0 40px 120px -30px rgba(34,230,255,.25),0 0 0 1px rgba(255,255,255,.02) inset;overflow:hidden;
+  transform:perspective(1400px) rotateY(-9deg) rotateX(4deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.term:hover{transform:perspective(1400px) rotateY(0) rotateX(0)}
+.term::before{content:"";position:absolute;inset:-1px;border-radius:18px;padding:1px;background:var(--grad);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.55;pointer-events:none}
+.bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.bar i{width:11px;height:11px;border-radius:50%;display:block}
+.bar i:nth-child(1){background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.bar span{margin-left:auto}
+#out{font-family:var(--mono);font-size:13px;line-height:1.7;padding:18px 20px 6px;height:360px;overflow-y:auto;scrollbar-width:thin}
+#out .c{color:var(--cyan)} #out .l{color:var(--lime)} #out .v{color:var(--violet)} #out .p{color:var(--pink)} #out .m{color:var(--muted)}
+#out .cmd{color:var(--text)} #out .cmd::before{content:"tim@2027 ~ ❯ ";color:var(--lime)}
+.inrow{display:flex;align-items:center;gap:8px;padding:6px 20px 18px;font-family:var(--mono);font-size:13px}
+.inrow label{color:var(--lime);white-space:nowrap}
+#cmd{flex:1;background:none;border:0;outline:0;color:var(--text);font:inherit;caret-color:var(--cyan)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 20px 18px}
+.chips button{font-family:var(--mono);font-size:11px;color:var(--muted);background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:4px 10px;cursor:pointer;transition:.2s}
+.chips button:hover{color:var(--bg);background:var(--cyan);border-color:var(--cyan)}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding:18px 0;background:rgba(255,255,255,.015);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.track{display:flex;gap:48px;width:max-content;animation:mq 40s linear infinite;font-family:var(--mono);font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+.track span::before{content:"✦ ";color:var(--lime)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:120px 0 40px}
+.sh{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:44px;flex-wrap:wrap}
+.sh small{font-family:var(--mono);font-size:12px;color:var(--lime);letter-spacing:.2em;display:block;margin-bottom:10px}
+.sh h2{font-size:clamp(36px,5vw,64px);letter-spacing:-.04em;line-height:1;font-weight:700}
+.sh p{color:var(--muted);max-width:380px;font-size:15px}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.tile{position:relative;border-radius:20px;padding:26px;background:var(--glass);border:1px solid var(--line);overflow:hidden;isolation:isolate}
+.tile::after{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .3s;
+  background:radial-gradient(420px circle at var(--x,50%) var(--y,50%),rgba(34,230,255,.14),transparent 45%)}
+.tile:hover::after{opacity:1}
+.tile::before{content:"";position:absolute;inset:0;border-radius:20px;padding:1px;opacity:0;transition:opacity .3s;
+  background:radial-gradient(300px circle at var(--x,50%) var(--y,50%),var(--cyan),transparent 60%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.tile:hover::before{opacity:1}
+.s2{grid-column:span 2}.s3{grid-column:span 3}.s4{grid-column:span 4}.s6{grid-column:span 6}
+.tile h3{font-size:22px;letter-spacing:-.02em;margin-bottom:10px}
+.tile p{color:var(--muted);font-size:15px}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:block}
+.big{font-size:clamp(46px,5vw,72px);font-weight:700;letter-spacing:-.05em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.tag{font-family:var(--mono);font-size:11.5px;padding:5px 10px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.orb{position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:conic-gradient(from 0deg,var(--lime),var(--cyan),var(--violet),var(--pink),var(--lime));filter:blur(40px);opacity:.35;animation:spin 12s linear infinite;z-index:-1}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* timeline */
+.tl{position:relative;padding-left:34px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--lime),var(--violet),transparent)}
+.job{position:relative;margin-bottom:22px}
+.job::before{content:"";position:absolute;left:-33px;top:30px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--lime);box-shadow:0 0 14px var(--lime)}
+.job .tile{padding:26px 28px}
+.jh{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.when{font-family:var(--mono);font-size:12px;color:var(--cyan)}
+.org{color:var(--muted);font-weight:400}
+.note{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:6px}
+.job ul{list-style:none;margin-top:14px;display:grid;gap:8px}
+.job li{color:var(--muted);font-size:15px;padding-left:22px;position:relative}
+.job li::before{content:"→";position:absolute;left:0;color:var(--lime);font-family:var(--mono)}
+
+/* projects */
+.proj{display:flex;flex-direction:column;min-height:280px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.proj:hover{transform:translateY(-6px)}
+.proj .num{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.proj .vis{height:120px;border-radius:12px;margin:14px 0 18px;border:1px solid var(--line);position:relative;overflow:hidden;
+  background:linear-gradient(135deg,rgba(180,255,57,.12),rgba(155,107,255,.12));}
+.proj .vis::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:20px 20px;mask:radial-gradient(circle at 30% 40%,#000,transparent 75%)}
+.proj:nth-child(2) .vis{background:linear-gradient(135deg,rgba(34,230,255,.15),rgba(255,79,216,.1))}
+.proj:nth-child(3) .vis{background:linear-gradient(135deg,rgba(155,107,255,.18),rgba(180,255,57,.08))}
+.proj .vis.ph{height:170px;background-size:cover;background-position:center;background-color:#11131c;filter:saturate(.75) contrast(1.05);transition:filter .4s,transform .4s}
+.proj:hover .vis.ph{filter:saturate(1) contrast(1.05)}
+.proj .vis.ph::after{opacity:.35}
+.proj .vis.dg{height:180px;background:#080a12;display:flex;align-items:center;justify-content:center;padding:6px}
+.proj .vis.dg svg{width:100%;height:100%;max-width:560px;position:relative;z-index:1}
+.proj .vis.dg::after{opacity:.5}
+.proj p{flex:1}
+.links{display:flex;gap:16px;margin-top:18px;font-family:var(--mono);font-size:12.5px}
+.links a{color:var(--cyan)} .links a:hover{color:var(--lime)}
+
+/* contact */
+.contact{text-align:center;padding:140px 0 100px}
+.contact h2{font-size:clamp(48px,9vw,140px);letter-spacing:-.05em;line-height:.9;font-weight:700}
+.contact p{color:var(--muted);margin:24px auto 36px;max-width:520px}
+.contact .cta{justify-content:center}
+footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);font-size:12px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* palette */
+#pal{position:fixed;inset:0;z-index:50;display:none;place-items:start center;padding-top:16vh;background:rgba(0,0,0,.55);backdrop-filter:blur(6px)}
+#pal.on{display:grid}
+.pbox{width:min(560px,calc(100% - 32px));border-radius:16px;background:rgba(14,16,24,.92);border:1px solid var(--line);box-shadow:0 30px 100px -20px rgba(155,107,255,.45);overflow:hidden;font-family:var(--mono)}
+#pq{width:100%;padding:18px 20px;background:none;border:0;border-bottom:1px solid var(--line);outline:0;color:var(--text);font:inherit;font-size:15px}
+#pl{list-style:none;max-height:320px;overflow:auto;padding:8px}
+#pl li{padding:10px 12px;border-radius:10px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;cursor:pointer}
+#pl li.sel,#pl li:hover{background:rgba(34,230,255,.1);color:var(--text)}
+#pl li em{font-style:normal;font-size:11px;opacity:.6}
+
+/* help + case studies + process */
+.help .tile{display:flex;flex-direction:column}
+.help .tile h3{font-size:18px;line-height:1.3}
+.help .tile .fix{flex:1}
+.help .tile .fix{margin-top:12px;color:var(--text);font-size:15px}
+.help .tile .see{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--cyan)}
+.help .tile .see:hover{color:var(--lime)}
+.cs{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.cs summary{cursor:pointer;font-family:var(--mono);font-size:12px;color:var(--cyan);list-style:none;display:flex;align-items:center;gap:8px}
+.cs summary::-webkit-details-marker{display:none}
+.cs summary::before{content:"+";display:inline-grid;place-items:center;width:18px;height:18px;border:1px solid var(--line);border-radius:5px;transition:.2s}
+.cs[open] summary::before{content:"\2212";color:var(--lime);border-color:var(--lime)}
+.cs dl{display:grid;grid-template-columns:110px 1fr;gap:10px 16px;margin-top:14px;font-size:14.5px}
+.cs dt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.cs dd{color:var(--text);opacity:.88}
+.proj .tags{margin-top:16px}
+.proj,section{scroll-margin-top:90px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.step .n{font-family:var(--mono);font-size:12px;color:var(--lime);display:block;margin-bottom:14px}
+.step h3{font-size:20px}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}.cs dl{grid-template-columns:1fr;gap:2px}.cs dd{margin-bottom:10px}}
+/* reveal */
+.rv{opacity:0;transform:translateY(30px);filter:blur(6px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1),filter .9s}
+.rv.in{opacity:1;transform:none;filter:none}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:110px;gap:40px;min-height:auto}
+  .term{transform:none}
+  .s2,.s3,.s4{grid-column:span 6}
+  nav ul li.hide{display:none}
+}
+@media (max-width:520px){ #out{height:300px} .kbd span{display:none} .proj .vis.dg{overflow-x:auto;justify-content:flex-start;height:190px} .proj .vis.dg svg{min-width:440px} }
+@media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important} .rv{opacity:1;transform:none;filter:none} }
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas><div class="noise"></div><div class="scan"></div><div class="glow" id="glow"></div>
+
+<nav>
+  <a class="logo" href="#top"><span class="dot"></span>tim.hanby</a>
+  <ul>
+    <li class="hide"><a href="#help">help</a></li>
+    <li class="hide"><a href="#projects">work</a></li>
+    <li class="hide"><a href="#process">process</a></li>
+    <li class="hide"><a href="#contact">contact</a></li>
+    <li><button class="kbd" id="palBtn"><span>command</span><b>⌘K</b></button></li>
+  </ul>
+</nav>
+
+<main id="top">
+<div class="wrap hero">
+  <div>
+    <div class="eyebrow">senior software architect · allentown, pa</div>
+    <h1 id="name">Timothy<br><span class="g">Hanby</span></h1>
+    <div class="role">&gt; <span class="typed" id="typed"></span><span class="caret"></span></div>
+    <div class="cta">
+      <a class="btn primary" href="resume.pdf" target="_blank">↓ resume.pdf</a>
+      <a class="btn" href="#help">what I can help with ↓</a>
+      <a class="btn" href="https://www.linkedin.com/in/tim-hanby/" target="_blank">linkedin ↗</a>
+    </div>
+    <div class="status">
+      <span><i></i>open to opportunities</span>
+      <span id="clock">--:--</span>
+    </div>
+  </div>
+
+  <div class="term" id="term">
+    <div class="bar"><i></i><i></i><i></i><span>zsh — tim@2027 — 80×24</span></div>
+    <div id="out" aria-live="polite"></div>
+    <div class="inrow"><label for="cmd">tim@2027 ~ ❯</label><input id="cmd" autocomplete="off" spellcheck="false" placeholder="type 'help'"></div>
+    <div class="chips"><button>whoami</button><button>skills</button><button>projects</button><button>contact</button><button>sudo hire tim</button></div>
+  </div>
+</div>
+
+<div class="marquee"><div class="track" id="track"></div></div>
+
+<div class="wrap">
+<section id="about">
+  <div class="sh rv"><div><small>01 / ABOUT</small><h2>Enterprise systems.<br>Applied AI.</h2></div>
+  <p>Twenty years designing enterprise software, from Java on J2EE to Claude-powered automation in production.</p></div>
+  <div class="bento">
+    <div class="tile s4 rv"><span class="label">// focus</span><h3>Applied AI in production</h3>
+      <p>I lead AI systems from first call to production: Claude-powered document extraction, browser automation that logs into portals and pulls documents on its own, and the integration and reliability work that keeps LLM platforms stable.</p><div class="orb"></div></div>
+    <div class="tile s2 rv"><span class="label">// years shipping</span><div class="big">20+</div><p>Enterprise software since 2007</p></div>
+    <div class="tile s2 rv"><span class="label">// industries</span><h3>Auto, property, ed-tech, QSR</h3><p>Dealer groups, property managers, online proctoring, restaurant chains</p></div>
+    <div class="tile s2 rv"><span class="label">// ai &amp; automation</span><div class="tags"><span class="tag">Anthropic Claude API</span><span class="tag">OpenAI API</span><span class="tag">MCP</span><span class="tag">LLM document extraction</span><span class="tag">Prompt engineering</span><span class="tag">Ollama</span><span class="tag">Playwright</span><span class="tag">n8n</span><span class="tag">Azure Logic Apps</span><span class="tag">Claude Code</span><span class="tag">Cursor</span><span class="tag">Copilot</span></div></div>
+    <div class="tile s2 rv"><span class="label">// languages &amp; platforms</span><div class="tags"><span class="tag">TypeScript</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">Ruby</span><span class="tag">SQL</span><span class="tag">A/B testing</span><span class="tag">Statistics</span><span class="tag">Reporting</span><span class="tag">Node.js</span><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">SvelteKit</span><span class="tag">Electron</span><span class="tag">Tailwind</span><span class="tag">Azure</span><span class="tag">AWS</span><span class="tag">Terraform</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span></div></div>
+  </div>
+</section>
+
+<section id="help" class="help">
+  <div class="sh rv"><div><small>02 / WHAT I CAN HELP WITH</small><h2>Problems I solve.</h2></div><p>Twelve problems I've already solved for real clients and teams. If one sounds familiar, let's talk.</p></div>
+  <div class="bento">
+    <div class="tile s2 rv"><span class="label">// ai · documents</span><h3>Your team retypes data from invoices and PDFs.</h3><p class="fix">Claude-powered extraction from the inbox straight into your system, with error tracking and an off switch.</p><a class="see" href="#p002">see: AP invoice extraction →</a></div>
+    <div class="tile s2 rv"><span class="label">// ai · no api</span><h3>The system you need data from has no API.</h3><p class="fix">Browser automation that logs in, finds the record, downloads the document and hands it to AI.</p><a class="see" href="#p001">see: dealer invoice intelligence →</a></div>
+    <div class="tile s2 rv"><span class="label">// ai · email</span><h3>Work starts when an email arrives.</h3><p class="fix">Automations that watch a mailbox, pick out attachments or IDs like VINs, and kick off the right workflow.</p><a class="see" href="#p001">see: dealer invoice intelligence →</a></div>
+    <div class="tile s2 rv"><span class="label">// ai · your data</span><h3>You want AI to work with your own systems.</h3><p class="fix">MCP servers and tool layers that give Claude scoped, testable access to your internal data.</p><a class="see" href="#p003">see: LLM platform build-out →</a></div>
+    <div class="tile s2 rv"><span class="label">// platform · llm</span><h3>Your AI product works in demos but breaks in production.</h3><p class="fix">The layer that keeps it up: clean integrations, webhook handling, rate limits with backoff, monitoring and tests.</p><a class="see" href="#p003">see: LLM platform build-out →</a></div>
+    <div class="tile s2 rv"><span class="label">// platform · integrations</span><h3>Every new integration means copy-pasted code.</h3><p class="fix">A shared adapter and webhook layer, so each new integration reuses the same plumbing.</p><a class="see" href="#p003">see: LLM platform build-out →</a></div>
+    <div class="tile s2 rv"><span class="label">// platform · reporting</span><h3>Weekly ops reports eat someone's Monday.</h3><p class="fix">Pipelines that pull store and district metrics out of operational systems into reports people actually read.</p></div>
+    <div class="tile s2 rv"><span class="label">// platform · scale</span><h3>Your API has to hold up under real traffic.</h3><p class="fix">Backend tuning and monitoring from someone who has run APIs at 10M+ requests a day.</p><a class="see" href="#experience">see: experience →</a></div>
+    <div class="tile s2 rv"><span class="label">// apps · security</span><h3>You need a desktop app users can't work around.</h3><p class="fix">Electron apps with system-level control: process monitoring, VM detection and screen-capture blocking.</p><a class="see" href="#p004">see: secure exam browser →</a></div>
+    <div class="tile s2 rv"><span class="label">// apps · hardware</span><h3>Your software has to talk to hardware.</h3><p class="fix">Kiosks, receipt and register printers, webcams and microphones wired into one app.</p><a class="see" href="#p005">see: self-serve kiosk →</a></div>
+    <div class="tile s2 rv"><span class="label">// apps · prove it</span><h3>You want to test an idea before betting the budget.</h3><p class="fix">A focused proof of concept, polished enough for real users and built to collect the data you need to decide.</p><a class="see" href="#p005">see: self-serve kiosk →</a></div>
+    <div class="tile s2 rv"><span class="label">// apps · legacy</span><h3>Your app is too old to change safely.</h3><p class="fix">Step-by-step modernization, test automation and CI, so changes stop breaking things.</p><a class="see" href="#experience">see: experience →</a></div>
+  </div>
+</section>
+
+
+<section id="projects">
+  <div class="sh rv"><div><small>03 / SELECTED WORK</small><h2>Things I've built recently.</h2></div><p>Client systems. Open any case study for the problem, the constraint and the trade-off.</p></div>
+  <div class="bento">
+    <div class="tile s3 proj rv" id="p001"><span class="num">001</span><div class="vis dg"><svg viewBox="0 0 480 170" role="img" aria-label="Dealer invoice pipeline diagram" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah001" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L8,4L0,8z" fill="rgba(255,255,255,.55)"/></marker></defs><line x1="116.0" y1="42.0" x2="132.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah001)"/><line x1="232.0" y1="42.0" x2="248.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah001)"/><line x1="348.0" y1="42.0" x2="364.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah001)"/><line x1="414.0" y1="62.0" x2="414.0" y2="106.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah001)"/><line x1="364.0" y1="126.0" x2="348.0" y2="126.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah001)"/><line x1="248.0" y1="126.0" x2="232.0" y2="126.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah001)"/><line x1="132.0" y1="126.0" x2="116.0" y2="126.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah001)"/><rect x="16.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--cyan)" stroke-width="1.2"/><text x="66.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Email</text><text x="66.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">VIN spotted</text><rect x="132.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="182.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Playwright</text><text x="182.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">portal login</text><rect x="248.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="298.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">OEM portal</text><text x="298.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">no API</text><rect x="364.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="414.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Invoice</text><text x="414.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">PDF</text><rect x="16.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--violet)" stroke-width="1.2"/><text x="66.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Sheets</text><text x="66.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">output</text><rect x="132.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(180,255,57,.07)" stroke="var(--lime)" stroke-width="1.2"/><text x="182.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Claude</text><text x="182.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">extract</text><rect x="248.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="298.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Raw text</text><text x="298.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">to Claude</text><rect x="364.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="414.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Parse</text><text x="414.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">server-side</text></svg></div><h3>Dealer invoice intelligence</h3><p>No API existed, so the pipeline drives OEM dealer portals with Playwright: it spots VINs in email, logs in, downloads the invoice and has Claude extract the data into Google Sheets. Heavy parsing runs server-side so Claude only sees raw text, which keeps costs down.</p><details class="cs"><summary>case study</summary><dl><dt>Problem</dt><dd>Getting vehicle invoice data meant logging into manufacturer portals one VIN at a time.</dd><dt>Constraint</dt><dd>The OEM portals have no API.</dd><dt>Built</dt><dd>Playwright automation triggered by VINs in email, server-side parsing, and Claude extraction into Google Sheets.</dd><dt>Trade-off</dt><dd>Browser automation is more fragile than an API, but it was the only way in. Sending Claude parsed text instead of whole files keeps the cost per invoice down.</dd></dl></details><div class="tags"><span class="tag">Playwright</span><span class="tag">Claude</span><span class="tag">Google Sheets</span></div></div>
+    <div class="tile s3 proj rv" id="p002"><span class="num">002</span><div class="vis dg"><svg viewBox="0 0 480 170" role="img" aria-label="AP invoice extraction diagram" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah002" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L8,4L0,8z" fill="rgba(255,255,255,.55)"/></marker></defs><line x1="116.0" y1="42.0" x2="132.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah002)"/><line x1="232.0" y1="42.0" x2="248.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah002)"/><line x1="348.0" y1="42.0" x2="364.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah002)"/><line x1="116.0" y1="107.9" x2="248.0" y2="60.1" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah002)"/><line x1="182.0" y1="106.0" x2="182.0" y2="62.0" stroke="var(--pink)" stroke-width="1.3" stroke-dasharray="4 4" marker-end="url(#ah002)"/><line x1="414.0" y1="62.0" x2="414.0" y2="106.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah002)"/><rect x="16.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--cyan)" stroke-width="1.2"/><text x="66.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">AP inbox</text><text x="66.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">Outlook</text><rect x="132.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="182.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Logic App</text><text x="182.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">1 at a time</text><rect x="248.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(180,255,57,.07)" stroke="var(--lime)" stroke-width="1.2"/><text x="298.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Claude</text><text x="298.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">PDF / image</text><rect x="364.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--violet)" stroke-width="1.2"/><text x="414.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Database</text><text x="414.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">+ erroredAt</text><rect x="16.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--cyan)" stroke-width="1.2"/><text x="66.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Upload UI</text><text x="66.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">manual</text><rect x="132.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--pink)" stroke-width="1.2"/><text x="182.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Kill switch</text><text x="182.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">on / off</text><rect x="364.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--violet)" stroke-width="1.2"/><text x="414.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Review UI</text><text x="414.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">tracking</text></svg></div><h3>AP invoice extraction</h3><p>An Azure Logic App watches an accounts-payable inbox and sends each attached invoice to Claude for vendor, amount, dates and invoice number. Every step saves state and logs failures, invoices run one at a time to respect API limits, and a kill switch disables it all.</p><details class="cs"><summary>case study</summary><dl><dt>Problem</dt><dd>Vendor invoices land in an accounts-payable inbox and had to be keyed in by hand.</dd><dt>Constraint</dt><dd>PDFs and images, sometimes several per email, and Claude API concurrency limits.</dd><dt>Built</dt><dd>A Logic App that handles each attachment, Claude extraction, a database record saved first with an error timestamp on failure, a manual-upload screen and a kill switch.</dd><dt>Trade-off</dt><dd>One-at-a-time processing is slower but avoids rate-limit failures. The manual-upload path repeats the Logic App steps; the next step is routing both through one API.</dd></dl></details><div class="tags"><span class="tag">Azure Logic Apps</span><span class="tag">Claude</span><span class="tag">TypeScript</span></div></div>
+    <div class="tile s3 proj rv" id="p003"><span class="num">003</span><div class="vis dg"><svg viewBox="0 0 480 170" role="img" aria-label="LLM platform integration diagram" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah003" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L8,4L0,8z" fill="rgba(255,255,255,.55)"/></marker></defs><line x1="116.0" y1="42.0" x2="132.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah003)"/><line x1="232.0" y1="42.0" x2="248.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah003)"/><line x1="348.0" y1="42.0" x2="364.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah003)"/><line x1="364.0" y1="126.0" x2="348.0" y2="126.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah003)"/><line x1="298.0" y1="106.0" x2="298.0" y2="62.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah003)"/><line x1="182.0" y1="106.0" x2="182.0" y2="62.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" stroke-dasharray="4 4" marker-end="url(#ah003)"/><rect x="16.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(180,255,57,.07)" stroke="var(--lime)" stroke-width="1.2"/><text x="66.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Chatbot</text><text x="66.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">LLM</text><rect x="132.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="182.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Tool layer</text><text x="182.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">testable</text><rect x="248.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="298.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Adapter</text><text x="298.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">base class</text><rect x="364.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--cyan)" stroke-width="1.2"/><text x="414.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">PM APIs</text><text x="414.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">ResMan · backoff</text><rect x="16.0" y="106.0" width="216.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="124.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Observability</text><text x="124.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">Sentry · tracing · health</text><rect x="364.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--cyan)" stroke-width="1.2"/><text x="414.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Webhooks</text><text x="414.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">inbound</text><rect x="248.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="298.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Handler</text><text x="298.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">verify · retry</text></svg></div><h3>LLM platform build-out</h3><p>Built the integration and reliability layer for a tenant-messaging chatbot: an integration adapter framework, shared webhook handling, health checks, Sentry logging, tracing, rate limiting, test coverage and a refactored LLM tool layer.</p><details class="cs"><summary>case study</summary><dl><dt>Problem</dt><dd>Every new property-management integration meant copying code.</dd><dt>Constraint</dt><dd>New integrations kept coming while the chatbot stayed live.</dd><dt>Built</dt><dd>An adapter base class, shared webhook handler, consolidated utilities, onboarding checklist, health checks, Sentry logging, tracing, rate limiting with backoff, ORM and integration tests, and a refactored LLM tool layer.</dd><dt>Trade-off</dt><dd>The platform stayed one service rather than splitting into microservices, because LLM inference, not infrastructure, was the bottleneck.</dd></dl></details><div class="tags"><span class="tag">Architecture</span><span class="tag">LLM systems</span></div></div>
+    <div class="tile s3 proj rv" id="p004"><span class="num">004</span><div class="vis dg"><svg viewBox="0 0 480 170" role="img" aria-label="Secure exam browser diagram" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah004" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L8,4L0,8z" fill="rgba(255,255,255,.55)"/></marker></defs><line x1="116.0" y1="42.0" x2="132.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah004)"/><line x1="232.0" y1="42.0" x2="248.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah004)"/><line x1="348.0" y1="42.0" x2="364.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah004)"/><line x1="182.0" y1="62.0" x2="182.0" y2="106.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" stroke-dasharray="4 4" marker-end="url(#ah004)"/><line x1="298.0" y1="62.0" x2="298.0" y2="106.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" stroke-dasharray="4 4" marker-end="url(#ah004)"/><line x1="414.0" y1="106.0" x2="414.0" y2="62.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah004)"/><rect x="16.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--cyan)" stroke-width="1.2"/><text x="66.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Login</text><text x="66.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">auth</text><rect x="132.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="182.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">System check</text><text x="182.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">cam · mic · VM</text><rect x="248.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--pink)" stroke-width="1.2"/><text x="298.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Lockdown</text><text x="298.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">no capture</text><rect x="364.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--violet)" stroke-width="1.2"/><text x="414.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Exam</text><text x="414.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">locked</text><rect x="16.0" y="106.0" width="332.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="182.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Backend</text><text x="182.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">event stream</text><rect x="364.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--cyan)" stroke-width="1.2"/><text x="414.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Proctor</text><text x="414.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">video · chat</text></svg></div><h3>Secure exam browser</h3><p>One Electron app replaced a plugin, a script and a remote-support install: process monitoring, VM detection, screen-capture blocking, OS lockdown and webcam streaming.</p><details class="cs"><summary>case study</summary><dl><dt>Problem</dt><dd>Securing an exam took a browser plugin, a script and a remote-support install. It was clunky and could be worked around.</dd><dt>Constraint</dt><dd>Lock down the operating system on testers' own machines while streaming webcam and audio to a live proctor.</dd><dt>Built</dt><dd>One Electron app with process monitoring, VM and remote-control detection, screen-capture blocking, taskbar and task-switcher lockdown, server events and proctor controls.</dd><dt>Trade-off</dt><dd>Electron gives system-level access a browser can't, at the cost of shipping and updating a desktop app.</dd></dl></details><div class="tags"><span class="tag">Electron</span><span class="tag">Security</span></div></div>
+    <div class="tile s6 proj rv" id="p005"><span class="num">005</span><div class="vis dg"><svg viewBox="0 0 480 170" role="img" aria-label="Self-serve kiosk diagram" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah005" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L8,4L0,8z" fill="rgba(255,255,255,.55)"/></marker></defs><line x1="116.0" y1="42.0" x2="132.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah005)"/><line x1="232.0" y1="42.0" x2="248.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah005)"/><line x1="348.0" y1="42.0" x2="364.0" y2="42.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah005)"/><line x1="298.0" y1="62.0" x2="298.0" y2="106.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah005)"/><line x1="248.0" y1="126.0" x2="232.0" y2="126.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah005)"/><line x1="132.0" y1="126.0" x2="116.0" y2="126.0" stroke="rgba(255,255,255,.35)" stroke-width="1.3" marker-end="url(#ah005)"/><rect x="16.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--cyan)" stroke-width="1.2"/><text x="66.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Menu</text><text x="66.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">touch UI</text><rect x="132.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="182.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Cart</text><text x="182.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">summary</text><rect x="248.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="298.0" y="46.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Order</text><rect x="364.0" y="22.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--violet)" stroke-width="1.2"/><text x="414.0" y="39.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Register</text><text x="414.0" y="53.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">print</text><rect x="16.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="var(--violet)" stroke-width="1.2"/><text x="66.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Research</text><text x="66.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">field test</text><rect x="132.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="182.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Warehouse</text><text x="182.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">data</text><rect x="248.0" y="106.0" width="100.0" height="40" rx="7" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/><text x="298.0" y="123.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--text)" font-family="var(--mono)">Batch</text><text x="298.0" y="137.0" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)">transactions</text></svg></div><h3>Self-serve kiosk</h3><p>Ordering kiosk proof of concept on Elo hardware for a restaurant chain's field test: menu, cart, register printing and data-warehouse batching.</p><details class="cs"><summary>case study</summary><dl><dt>Problem</dt><dd>The chain wanted to test self-serve ordering before paying for a full kiosk rollout.</dd><dt>Constraint</dt><dd>Cheap enough to be a trial, polished enough to produce real research data.</dd><dt>Built</dt><dd>A kiosk app on Elo hardware with animations, menu, cart, register printing and transaction batching to a data warehouse.</dd><dt>Trade-off</dt><dd>Franchise management, admin dashboards and kitchen displays were left out to keep the trial low-cost, with room to add them later.</dd></dl></details><div class="tags"><span class="tag">Kiosk</span><span class="tag">Data</span></div></div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="sh rv"><div><small>04 / HOW I WORK</small><h2>Small, working, then solid.</h2></div><p>The same approach behind every project above.</p></div>
+  <div class="steps">
+    <div class="tile step rv"><span class="n">01</span><h3>Discover</h3><p>A short call to understand the problem, the systems involved and what "done" looks like for you.</p></div>
+    <div class="tile step rv"><span class="n">02</span><h3>Prove it</h3><p>A small working version against real data first, so you see results before committing a big budget.</p></div>
+    <div class="tile step rv"><span class="n">03</span><h3>Iterate</h3><p>Short sprints, re-prioritized as we learn. You see progress every week, not at the end.</p></div>
+    <div class="tile step rv"><span class="n">04</span><h3>Harden</h3><p>Error handling, monitoring, rate limits and tests, so it keeps running after launch.</p></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="sh rv"><div><small>05 / EXPERIENCE</small><h2>Where I've shipped.</h2></div><p>Highlights by role. Full detail in the resume.</p></div>
+  <div class="tl">
+    <div class="job rv"><div class="tile">
+      <div class="jh"><h3>Senior Lead Engineer <span class="org">@ ResultStack</span></h3><span class="when">Oct 2018 → now · remote</span></div>
+      <ul>
+        <li>Led an AI invoice pipeline for an auto dealer group: watches email for VINs, logs into OEM portals like Kia with Playwright, pulls invoices and extracts them with Claude into Google Sheets.</li>
+        <li>Built Azure Logic Apps + Claude invoice extraction for a property manager's accounts-payable inbox, with error tracking, rate-limit-safe processing, manual upload and a kill switch.</li>
+        <li>Built the integration and reliability layer for an LLM tenant-messaging platform: integration framework, webhooks, observability, rate limiting, tests and a refactored LLM tool layer.</li>
+        <li>Led an Electron lockdown browser for an online proctoring company: process monitoring, VM and remote-control detection, screen-capture blocking and webcam streaming.</li>
+        <li>Built a self-serve ordering kiosk proof of concept for a restaurant chain's field test, with register printing and transaction batching to a data warehouse.</li>
+      </ul>
+      <div class="tags"><span class="tag">Claude API</span><span class="tag">Playwright</span><span class="tag">Azure Logic Apps</span><span class="tag">TypeScript</span><span class="tag">Electron</span><span class="tag">Sentry</span></div>
+    </div></div>
+    <div class="job rv"><div class="tile">
+      <div class="jh"><h3>Software Engineer <span class="org">@ Orbweaver Inc</span></h3><span class="when">Jan 2016 → Apr 2019 · Bethlehem, PA</span></div>
+      <p class="note">Overlapped with my first six months at ResultStack during the transition.</p>
+      <ul>
+        <li>Managed and optimized Ruby APIs serving more than 10 million requests per day.</li>
+        <li>Migrated AngularJS applications to Angular 2+ for long-term maintainability.</li>
+        <li>Introduced Docker, AWS Lambda and CI pipelines, plus RSpec and Cucumber test automation that cut production defects.</li>
+      </ul>
+      <div class="tags"><span class="tag">Ruby</span><span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">AWS Lambda</span><span class="tag">Docker</span></div>
+    </div></div>
+    <div class="job rv"><div class="tile">
+      <div class="jh"><h3>Software Engineer <span class="org">@ Trifecta Technologies</span></h3><span class="when">Jan 2009 → Nov 2015</span></div>
+      <ul>
+        <li>Delivered enterprise Java applications for clients including Disney, Penske, Varsity and BrandywineGLOBAL.</li>
+        <li>Built Disney's Student Intern Registration (DORMS) and FastPass scheduling applications for high-volume customer use.</li>
+        <li>Owned backend services, database integrations and frontend components across the full lifecycle.</li>
+      </ul>
+      <div class="tags"><span class="tag">Java</span><span class="tag">J2EE</span><span class="tag">Spring</span><span class="tag">Hibernate</span></div>
+    </div></div>
+  </div>
+  <div class="bento rv" style="margin-top:28px">
+    <div class="tile s3"><span class="label">// education</span><h3>B.S. Computer Science</h3><p>DeSales University</p></div>
+    <div class="tile s3"><span class="label">// certifications</span><div class="tags"><span class="tag">Sun Certified Java Programmer</span><span class="tag">Microsoft .NET App Development</span><span class="tag">IBM Certified Solutions Developer</span></div></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <small style="font-family:var(--mono);color:var(--lime);letter-spacing:.2em;font-size:12px">06 / CONTACT</small>
+  <h2 class="rv">Let's build<br><span class="g" style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">what's next.</span></h2>
+  <p class="rv">Hiring for a full-time remote role, or need help with a project? Send a line about the problem and I'll tell you honestly whether I'm the right fit.</p>
+  <div class="cta rv"><a class="btn primary" data-mail="?subject=Project%20or%20role%3A%20" href="#contact">✉ start a conversation</a><a class="btn" href="https://www.linkedin.com/in/tim-hanby/" target="_blank">linkedin ↗</a><a class="btn" href="resume.pdf" target="_blank">resume.pdf ↓</a></div>
+</section>
+</div>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Timothy Hanby · Allentown, PA</span><span>handcrafted html · press ⌘K</span></div></footer>
+
+<div id="pal"><div class="pbox"><input id="pq" placeholder="Jump to… or run a command" autocomplete="off"><ul id="pl"></ul></div></div>
+
+<script>
+const EM=['tim.hanby.dev','gmail.com'].join('@');
+const $=s=>document.querySelector(s), RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+$('#yr').textContent=new Date().getFullYear();
+document.querySelectorAll('[data-mail]').forEach(a=>a.href='mailto:'+EM+a.dataset.mail);
+setInterval(()=>$('#clock').textContent='allentown · '+new Date().toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'2-digit',minute:'2-digit',second:'2-digit'}),1000);
+
+/* ---- background: perspective grid + drifting particles ---- */
+const cv=$('#bg'),cx=cv.getContext('2d');let W,H,pts=[],mx=.5,my=.5;
+function rs(){W=cv.width=innerWidth*devicePixelRatio;H=cv.height=innerHeight*devicePixelRatio;cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
+  pts=Array.from({length:Math.min(90,innerWidth/14)},()=>({x:Math.random()*W,y:Math.random()*H,v:.15+Math.random()*.5,r:Math.random()*1.6+.3}))}
+rs();addEventListener('resize',rs);
+function draw(t){
+  cx.clearRect(0,0,W,H);const d=devicePixelRatio,hz=H*.62,off=(t*.04*d)%(40*d);
+  const g=cx.createLinearGradient(0,hz,0,H);g.addColorStop(0,'rgba(34,230,255,0)');g.addColorStop(1,'rgba(155,107,255,.22)');
+  cx.strokeStyle=g;cx.lineWidth=d;
+  for(let i=-24;i<=24;i++){const x=W/2+(mx-.5)*120*d;cx.beginPath();cx.moveTo(x+i*6*d,hz);cx.lineTo(x+i*120*d,H);cx.stroke()}
+  for(let y=0;y<14;y++){const p=Math.pow((y*40*d+off)/(14*40*d),2.2),yy=hz+p*(H-hz);cx.globalAlpha=p;cx.beginPath();cx.moveTo(0,yy);cx.lineTo(W,yy);cx.stroke()}
+  cx.globalAlpha=1;
+  for(const p of pts){p.y-=p.v*d;if(p.y<0){p.y=H;p.x=Math.random()*W}
+    cx.fillStyle=`rgba(180,255,57,${.25+p.r*.2})`;cx.beginPath();cx.arc(p.x+(mx-.5)*30*p.r*d,p.y,p.r*d,0,7);cx.fill()}
+  if(!RM)requestAnimationFrame(draw)}
+requestAnimationFrame(draw);
+
+/* cursor glow + tile spotlight */
+addEventListener('pointermove',e=>{mx=e.clientX/innerWidth;my=e.clientY/innerHeight;const gl=$('#glow');gl.style.left=e.clientX+'px';gl.style.top=e.clientY+'px'});
+document.querySelectorAll('.tile').forEach(el=>el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--x',e.clientX-r.left+'px');el.style.setProperty('--y',e.clientY-r.top+'px')}));
+
+/* name scramble */
+function scramble(el){const chars='!<>-_\\/[]{}—=+*^?#01';const spans=[el.childNodes[0],el.querySelector('.g').firstChild];
+  spans.forEach((n,k)=>{const fin=n.textContent;let f=0;const iv=setInterval(()=>{n.textContent=fin.split('').map((c,i)=>i<f/3?c:chars[Math.random()*chars.length|0]).join('');if(f++>fin.length*3){n.textContent=fin;clearInterval(iv)}},28+k*8)})}
+if(!RM)scramble($('#name'));
+
+/* typed roles */
+const roles=['senior software architect','agentic AI engineer','enterprise systems architect','senior lead engineer'];let ri=0,ci=0,del=false;
+(function type(){const w=roles[ri];$('#typed').textContent=w.slice(0,ci);
+  if(!del&&ci++===w.length){del=true;return setTimeout(type,1600)}if(del&&ci--===0){del=false;ri=(ri+1)%roles.length}
+  setTimeout(type,del?35:70)})();
+
+/* marquee */
+const mq=['Anthropic Claude','OpenAI','Model Context Protocol','Playwright','Azure Logic Apps','n8n','Ollama','TypeScript','Python','Next.js','React Native','Expo','SvelteKit','Electron','Terraform','AWS','Azure','Sentry','A/B testing','Statistics','KPI reporting'];
+$('#track').innerHTML=[...mq,...mq].map(s=>`<span>${s}</span>`).join('');
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
+
+/* ---- interactive terminal ---- */
+const out=$('#out'),inp=$('#cmd'),hist=[];let hi=0;
+const C={
+  help:()=>`<span class="m">available commands:</span>
+  <span class="c">whoami</span>     who is this guy
+  <span class="c">skills</span>     the stack
+  <span class="c">experience</span> where I've worked
+  <span class="c">help-me</span>    problems I solve
+  <span class="c">projects</span>   things I've built
+  <span class="c">contact</span>    get in touch
+  <span class="c">resume</span>     download resume.pdf
+  <span class="c">neofetch</span>   system info
+  <span class="c">clear</span>      clear screen`,
+  whoami:()=>`<span class="l">Timothy Hanby</span> — senior software architect.
+20+ yrs enterprise systems · agentic AI · LLM integration.`,
+  skills:()=>`<span class="v">ai/auto</span>    Claude API · OpenAI · MCP · Ollama · Playwright · n8n · Logic Apps
+<span class="v">languages</span>  TypeScript · JavaScript · Python · Java · Ruby · SQL
+<span class="v">frontend</span>   React · Next.js · React Native · Expo · SvelteKit · Angular · Electron · Tailwind
+<span class="v">backend</span>    Node.js · Spring · Hibernate · REST · webhooks
+<span class="v">cloud</span>      Azure · AWS Lambda · Terraform · Docker · GitHub Actions · Sentry
+<span class="v">data</span>       PostgreSQL · MySQL · SQL Server · Google Sheets API
+<span class="v">analytics</span>  A/B testing · statistical analysis · reporting &amp; KPI dashboards
+<span class="v">testing</span>    RSpec · Cucumber · Postman`,
+  experience:()=>{go('#experience');return '<span class="m">→ scrolling to experience…</span>'},
+  'help-me':()=>{go('#help');return '<span class="m">→ scrolling to what I can help with…</span>'},
+  projects:()=>{go('#projects');return '<span class="m">→ scrolling to projects…</span>'},
+  contact:()=>`email    <a class="c" href="mailto:${EM}">${EM}</a>
+linkedin <a class="c" href="https://www.linkedin.com/in/tim-hanby/" target="_blank">linkedin.com/in/tim-hanby</a>
+location Allentown, PA`,
+  resume:()=>{open('resume.pdf','_blank');return '<span class="l">✓</span> opening resume.pdf'},
+  neofetch:()=>`<span class="l">   ▄▄▄▄▄▄▄   </span> <span class="c">timothy</span>@<span class="c">2027</span>
+<span class="l">  █ ▄▄▄▄▄ █  </span> ─────────────
+<span class="l">  █ █   █ █  </span> <span class="v">OS</span>      Portfolio v2027.1
+<span class="l">  █ █▄▄▄█ █  </span> <span class="v">Shell</span>   zsh + caffeine
+<span class="l">  █▄▄▄▄▄▄▄█  </span> <span class="v">Uptime</span>  20+ yrs shipping
+<span class="l">             </span> <span class="v">Stack</span>   Claude + Playwright
+<span class="l">             </span> <span class="v">Clients</span> auto · property · ed-tech · QSR`,
+  'sudo hire tim':()=>`<span class="p">[sudo]</span> password for recruiter: ********
+<span class="l">✓ access granted.</span> <a class="c" href="mailto:${EM}">→ send the offer</a>`,
+  ls:()=>'about/  experience/  projects/  contact/  resume.pdf',
+  date:()=>new Date().toString(),
+  clear:()=>{out.innerHTML='';return null}
+};
+function go(s){document.querySelector(s).scrollIntoView({behavior:'smooth'})}
+function print(h,cls){const d=document.createElement('div');if(cls)d.className=cls;d.style.whiteSpace='pre-wrap';d.innerHTML=h;out.appendChild(d);out.scrollTop=out.scrollHeight}
+function run(raw){const c=raw.trim().toLowerCase();if(!c)return;hist.push(raw);hi=hist.length;print(raw.replace(/</g,'&lt;'),'cmd');
+  const f=C[c]||(c.startsWith('sudo')?C['sudo hire tim']:null);const r=f?f():`<span class="p">zsh: command not found:</span> ${c.replace(/</g,'&lt;')} <span class="m">— try 'help'</span>`;if(r!==null)print(r)}
+inp.addEventListener('keydown',e=>{if(e.key==='Enter'){run(inp.value);inp.value=''}
+  else if(e.key==='ArrowUp'){hi=Math.max(0,hi-1);inp.value=hist[hi]||''}else if(e.key==='ArrowDown'){hi=Math.min(hist.length,hi+1);inp.value=hist[hi]||''}
+  else if(e.key==='Tab'){e.preventDefault();const m=Object.keys(C).find(k=>k.startsWith(inp.value));if(m)inp.value=m}});
+document.querySelectorAll('.chips button').forEach(b=>b.onclick=()=>run(b.textContent));
+$('#term').addEventListener('click',e=>{if(e.target.tagName!=='A'&&e.target.tagName!=='BUTTON')inp.focus({preventScroll:true})});
+
+/* boot sequence */
+const boot=[['<span class="m">[  0.000] booting portfolio kernel v2027.1</span>',140],['<span class="m">[  0.112] mounting /dev/experience</span> <span class="l">ok</span>',120],
+  ['<span class="m">[  0.231] loading agents: planner reviewer analyst</span> <span class="l">ok</span>',140],['<span class="m">[  0.348] connecting MCP servers (4)</span> <span class="l">ok</span>',140],
+  ['<span class="m">[  0.402] </span><span class="c">all systems nominal.</span>',220],['',60],[C.whoami(),200],['',40],['<span class="m">type </span><span class="c">help</span><span class="m"> or tap a command below ↓</span>',0]];
+(async()=>{for(const [l,w] of boot){print(l);if(!RM)await new Promise(r=>setTimeout(r,w))}})();
+
+/* ---- command palette ---- */
+const P=[['What I can help with','#help','nav'],['Go to About','#about','nav'],['How I work','#process','nav'],['Go to Experience','#experience','nav'],['Go to Projects','#projects','nav'],['Go to Contact','#contact','nav'],
+  ['Download resume','resume','action'],['Open LinkedIn','li','link'],['Send email','mail','action'],['Run neofetch in terminal','neo','fun']];
+const pal=$('#pal'),pq=$('#pq'),pl=$('#pl');let sel=0,list=P;
+function render(){list=P.filter(p=>p[0].toLowerCase().includes(pq.value.toLowerCase()));sel=Math.min(sel,list.length-1);
+  pl.innerHTML=list.map((p,i)=>`<li class="${i===sel?'sel':''}" data-i="${i}">${p[0]}<em>${p[2]}</em></li>`).join('')}
+function act(p){closeP();const k=p[1];if(k[0]==='#')go(k);else if(k==='resume')open('resume.pdf','_blank');
+  else if(k==='li')open('https://www.linkedin.com/in/tim-hanby/','_blank');else if(k==='mail')location.href='mailto:'+EM;else if(k==='neo'){go('#top');run('neofetch')}}
+function openP(){pal.classList.add('on');pq.value='';sel=0;render();pq.focus()} function closeP(){pal.classList.remove('on')}
+$('#palBtn').onclick=openP;pal.onclick=e=>{if(e.target===pal)closeP()};
+pl.onclick=e=>{const li=e.target.closest('li');if(li)act(list[li.dataset.i])};
+pq.oninput=()=>{sel=0;render()};
+addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.classList.contains('on')?closeP():openP()}
+  if(!pal.classList.contains('on'))return;if(e.key==='Escape')closeP();
+  if(e.key==='ArrowDown'){sel=(sel+1)%list.length;render()}if(e.key==='ArrowUp'){sel=(sel-1+list.length)%list.length;render()}if(e.key==='Enter'&&list[sel])act(list[sel])});
+</script>
+</body>
+</html>
